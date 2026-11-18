@@ -1,0 +1,33 @@
+{
+  "meta": {"fonte": "EXEMPLO – coordenadas aproximadas e atributos fictícios. Substituir por data/osm.json (fetch_osm.py) ou pela recolha da equipa.", "exemplo": true},
+  "nos": [
+    {"id": "ferry", "nome": "Terminal do ferry", "lat": 38.6881, "lon": -9.1490, "poi": true},
+    {"id": "praca", "nome": "Praça do terminal", "lat": 38.6878, "lon": -9.1498},
+    {"id": "metro", "nome": "Paragem Metro Sul do Tejo", "lat": 38.6873, "lon": -9.1499, "poi": true},
+    {"id": "bus", "nome": "Paragem de autocarro", "lat": 38.6876, "lon": -9.1510, "poi": true},
+    {"id": "cdr1", "nome": "Rua Cândido dos Reis (início)", "lat": 38.6870, "lon": -9.1503},
+    {"id": "cdr2", "nome": "Rua Cândido dos Reis (meio)", "lat": 38.6865, "lon": -9.1510},
+    {"id": "elev", "nome": "Elevador", "lat": 38.6868, "lon": -9.1506},
+    {"id": "pedonal", "nome": "Zona pedonal", "lat": 38.6860, "lon": -9.1517, "poi": true},
+    {"id": "largo", "nome": "Largo da Igreja", "lat": 38.6868, "lon": -9.1517},
+    {"id": "ginjal", "nome": "Acesso ao Cais do Ginjal", "lat": 38.6883, "lon": -9.1510},
+    {"id": "escad", "nome": "Escadaria do Ginjal", "lat": 38.6877, "lon": -9.1516}
+  ],
+  "troços": [
+    {"a": "ferry", "b": "praca", "nome": "Cais"},
+    {"a": "praca", "b": "metro", "nome": "Ligação ao metro"},
+    {"a": "metro", "b": "cdr1", "nome": "Escadas da Rua Cândido dos Reis", "degraus": true},
+    {"a": "praca", "b": "bus", "nome": "Passeio junto à estrada", "estreito": true, "largura": 90},
+    {"a": "bus", "b": "cdr1", "nome": "Rua lateral", "degradado": true},
+    {"a": "cdr1", "b": "cdr2", "nome": "Rua Cândido dos Reis"},
+    {"a": "cdr1", "b": "elev", "nome": "Elevador municipal", "degraus": true, "elevador": true},
+    {"a": "elev", "b": "cdr2", "nome": "Passagem do elevador"},
+    {"a": "cdr2", "b": "pedonal", "nome": "Rua pedonal"},
+    {"a": "cdr2", "b": "largo", "nome": "Travessa do Largo", "estreito": true, "largura": 80, "degradado": true},
+    {"a": "largo", "b": "pedonal", "nome": "Degraus para a zona pedonal", "degraus": true},
+    {"a": "bus", "b": "ginjal", "nome": "Estrada do Ginjal"},
+    {"a": "ferry", "b": "ginjal", "nome": "Passeio do cais", "estreito": true, "largura": 100},
+    {"a": "ginjal", "b": "escad", "nome": "Descida do Ginjal", "degraus": true},
+    {"a": "escad", "b": "largo", "nome": "Escadaria do Ginjal", "degraus": true}
+  ]
+}
