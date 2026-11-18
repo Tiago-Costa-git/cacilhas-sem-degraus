@@ -211,7 +211,8 @@ async function init(){
 // Detalhado: OpenStreetMap (lojas, cafés, números de porta…) · Satélite: Esri World Imagery
 const FUNDOS={
  simples:()=>[...((window.CARTO_KEY||"").trim()?[["https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?api_key="+encodeURIComponent(window.CARTO_KEY.trim()),{subdomains:"abcd",maxNativeZoom:20,attribution:"© OpenStreetMap contributors © CARTO"}]]:[]),
-  ["https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png",{maxNativeZoom:20,attribution:'© <a href="https://stadiamaps.com/">Stadia Maps</a> © OpenMapTiles © OpenStreetMap contributors'}],
+  // Stadia só funciona sem registo em localhost; noutro domínio devolve uma imagem "401 Error" (que não conta como erro)
+  ...(["localhost","127.0.0.1"].includes(location.hostname)?[["https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png",{maxNativeZoom:20,attribution:'© <a href="https://stadiamaps.com/">Stadia Maps</a> © OpenMapTiles © OpenStreetMap contributors'}]]:[]),
   ["https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxNativeZoom:19,attribution:"© OpenStreetMap contributors"}]],
  detalhado:()=>[["https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxNativeZoom:19,attribution:"© OpenStreetMap contributors"}]],
  satelite:()=>[["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{maxNativeZoom:19,attribution:"Imagens © Esri, Maxar, Earthstar Geographics"}]]};
