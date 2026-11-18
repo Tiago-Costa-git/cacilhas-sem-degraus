@@ -3,7 +3,8 @@
 > A rota mais curta e a rota que consegues fazer.
 > *Accessible routing for Cacilhas (Almada, Portugal): compares the shortest walking route with the best route for wheelchairs, crutches, strollers and reduced mobility.*
 
-**🌐 Experimentar online:** https://O_TEU_USERNAME.github.io/cacilhas-sem-degraus/
+**🌐 Experimenta online:** https://tiago-costa-git.github.io/cacilhas-sem-degraus/ 
+
 
 <!-- Depois de publicar: tira uma captura de ecrã com uma rota, guarda-a em docs/rota.png e tira o comentário da linha abaixo -->
 <!-- ![Rota acessível em Cacilhas](docs/rota.png) -->
