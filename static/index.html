@@ -27,7 +27,10 @@ body{color:var(--ink);font:16px/1.45 "Atkinson Hyperlegible",system-ui,sans-seri
 #bcam{display:none;position:fixed;top:8px;right:8px;z-index:810;border:0;padding:10px 14px;border-radius:999px!important;align-items:center;gap:6px;font-weight:700;color:var(--ink)}
 header{padding:18px 20px 10px;display:flex;gap:12px;align-items:center}
 .logo{width:40px;height:40px;border-radius:13px;background:linear-gradient(145deg,#12a58b,#0b7663);display:grid;place-items:center;flex:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 4px 12px rgba(11,138,116,.35)}
-h1{margin:0;font-size:1.25rem;line-height:1.1}.sub{margin:2px 0 0;color:var(--mut);font-size:.9rem}
+h1{margin:0;font-size:1.25rem;line-height:1.1}
+.bsobre{margin-left:auto;align-self:flex-start;border:1px solid rgba(255,255,255,.85);background:rgba(255,255,255,.65);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:.8rem;font-weight:700;flex:none}.bsobre:hover{background:#fff}
+#sobre>div{max-width:520px;max-height:calc(100vh - 32px);overflow:auto}#sobre h3{font-size:.95rem;margin:14px 0 4px}#sobre p,#sobre li{font-size:.9rem;margin:0 0 6px}#sobre ul{padding-left:18px;margin:0 0 6px}
+.selo{display:inline-block;background:var(--warn);color:#3a2600;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:3px 9px;margin-bottom:8px}.sub{margin:2px 0 0;color:var(--mut);font-size:.9rem}
 .sec{padding:4px 20px 14px}.lbl{font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);margin:0 0 8px}
 .perfis{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .perfil{border:1px solid rgba(255,255,255,.75);background:var(--glass-2);border-radius:14px;padding:8px 2px 6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;font:inherit;font-size:.68rem;color:var(--ink);line-height:1.1;text-align:center;transition:transform .25s var(--ease),background .25s,border-color .25s,box-shadow .25s}
@@ -103,7 +106,7 @@ details{border-top:1px solid rgba(14,34,51,.08);padding:12px 20px}details summar
 <div id="mapa"></div>
 <aside class="painel glass"><div class="scroll">
  <header><div class="logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 18h5l4-8h7"/><circle cx="18" cy="6" r="2"/></svg></div>
-  <div><h1>Cacilhas Sem Degraus</h1><p class="sub">A rota mais curta e a rota que consegues fazer.</p></div></header>
+  <div><h1>Cacilhas Sem Degraus</h1><p class="sub">A rota mais curta e a rota que consegues fazer.</p></div><button class="bsobre" id="bsobre" aria-haspopup="dialog">Sobre</button></header>
  <div class="sec"><p class="lbl">Como te deslocas?</p><div class="perfis" id="perfis"></div></div>
  <div class="sec"><p class="lbl">Percurso</p>
   <div class="campo"><span class="badge" style="background:var(--nor)">A</span><div class="busca"><input id="qa" placeholder="De onde? Rua, paragem ou local" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="la"><button class="x" id="xa" aria-label="Apagar origem">×</button><div class="lista glass" id="la" role="listbox"></div></div></div>
@@ -143,6 +146,24 @@ details{border-top:1px solid rgba(14,34,51,.08);padding:12px 20px}details summar
  <label for="mdesc">Detalhes (opcional, até 300 caracteres)</label><textarea id="mdesc" maxlength="300" rows="3" placeholder="Ex.: carrinha estacionada em cima do passeio às horas de entrega"></textarea>
  <p class="mut" style="margin-top:8px">Não escrevas nomes, matrículas ou outros dados pessoais.</p>
  <div class="acoes"><button class="btn" id="menv">Enviar</button><button class="btn lite" id="mcan">Cancelar</button></div></div></div>
+<div class="modal" id="sobre" role="dialog" aria-modal="true" aria-labelledby="st"><div class="glass">
+ <span class="selo">Protótipo · em desenvolvimento</span>
+ <h2 id="st">Sobre o Cacilhas Sem Degraus</h2>
+ <p>Este site é o <b>início de um projeto</b>: um protótipo feito por estudantes, que ainda está a ser construído e testado. Não é um serviço oficial nem uma aplicação terminada.</p>
+ <h3>O que já faz</h3>
+ <p>Compara a rota mais curta a pé com a melhor rota para quem anda de cadeira de rodas, de muletas, com um carrinho de bebé ou com mobilidade reduzida, em Cacilhas (Almada).</p>
+ <h3>Limitações importantes</h3>
+ <ul>
+  <li><b>Muitas ruas ainda não têm dados.</b> A rede vem do OpenStreetMap e a maioria dos troços não tem informação sobre a largura do passeio, rampas, degraus ou estado do piso. Quando falta essa informação, o algoritmo trata o troço como se <b>não tivesse obstáculos</b>.</li>
+  <li>Por isso, nessas ruas a capacidade de calcular uma rota realmente acessível é <b>pequena</b>: a rota sugerida pode ter obstáculos que o site não conhece.</li>
+  <li>Tempos, velocidades e inclinações são <b>estimativas</b>, ainda por calibrar com a recolha de dados a pé.</li>
+  <li>Na versão online, os obstáculos que reportares ficam guardados só no teu browser.</li>
+ </ul>
+ <p><b>Não uses este site como única fonte para decidir um percurso.</b> Confirma sempre no local.</p>
+ <h3>Quem fez</h3>
+ <p>É um trabalho secundário, feito em paralelo com as aulas, no âmbito da unidade curricular de Fundamentos de Inteligência Artificial (AI Expo) do CTeSP em Cibersegurança do Instituto Piaget de Almada, por <b>Tiago Costa, André Filipe e Guilherme Lopes</b>.</p>
+ <p class="mut">Dados © contribuidores do OpenStreetMap (ODbL). Código no <a href="https://github.com/Tiago-Costa-git/cacilhas-sem-degraus" target="_blank" rel="noopener">GitHub</a>.</p>
+ <div class="acoes"><button class="btn" id="sfecha">Percebi</button></div></div></div>
 <script>
 const $=i=>document.getElementById(i),C={nor:"#e8892b",sem:"#0b8a74",esc:"#d23b46",ele:"#2f6fe4",warn:"#f0a020"};
 const ICONES={cadeira_manual:'<circle cx="10" cy="4" r="2"/><path d="M10 7v6h6l2 5"/><circle cx="10" cy="17" r="4"/>',
@@ -204,7 +225,9 @@ async function init(){
  $("gps").onclick=gps;$("svA").onclick=()=>S[0]&&sv(S[0]);$("svB").onclick=()=>S[1]&&sv(S[1]);
  [$("alpha"),$("beta"),$("alg")].forEach(i=>i.onchange=()=>S[0]&&S[1]&&atualiza());
  $("rep").onclick=()=>modo(!modoRep);$("mcan").onclick=fechaModal;$("menv").onclick=enviaReporte;
- document.addEventListener("keydown",e=>{if(e.key==="Escape"){fechaModal();modo(false)}});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"){fechaModal();fechaSobre();modo(false)}});
+ $("bsobre").onclick=abreSobre;$("sfecha").onclick=fechaSobre;$("sobre").onclick=e=>{if(e.target.id==="sobre")fechaSobre()};
+ let visto=false;try{visto=localStorage.getItem("csd_sobre_visto")==="1"}catch(_){}if(!visto)abreSobre();
  carregaReportes()}
 // ---------- mapa de fundo ----------
 // Simples: CARTO Voyager (com chave) -> Stadia OSM Bright (grátis em localhost) -> OpenStreetMap
@@ -213,6 +236,8 @@ const FUNDOS={
  simples:()=>[...((window.CARTO_KEY||"").trim()?[["https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?api_key="+encodeURIComponent(window.CARTO_KEY.trim()),{subdomains:"abcd",maxNativeZoom:20,attribution:"© OpenStreetMap contributors © CARTO"}]]:[]),
   // Stadia só funciona sem registo em localhost; noutro domínio devolve uma imagem "401 Error" (que não conta como erro)
   ...(["localhost","127.0.0.1"].includes(location.hostname)?[["https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png",{maxNativeZoom:20,attribution:'© <a href="https://stadiamaps.com/">Stadia Maps</a> © OpenMapTiles © OpenStreetMap contributors'}]]:[]),
+  // Esri World Street Map: estilo mais limpo que o OpenStreetMap, sem chave (o mesmo fornecedor do "Satélite")
+  ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",{maxNativeZoom:19,attribution:"Mapa © Esri, HERE, Garmin, © OpenStreetMap contributors"}],
   ["https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxNativeZoom:19,attribution:"© OpenStreetMap contributors"}]],
  detalhado:()=>[["https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxNativeZoom:19,attribution:"© OpenStreetMap contributors"}]],
  satelite:()=>[["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{maxNativeZoom:19,attribution:"Imagens © Esri, Maxar, Earthstar Geographics"}]]};
@@ -316,6 +341,8 @@ function modo(on){modoRep=on;$("rep").classList.toggle("on",on);$("banner").styl
 async function reportarEm(ll){modo(false);const r=await api(`api/encaixar?lat=${ll.lat}&lon=${ll.lng}`);
  if(r.erro||r.distancia_clique>80){$("dica").textContent="Esse ponto fica longe de qualquer rua. Tenta outra vez, mais perto da rua.";return}
  repPonto={lat:r.lat,lon:r.lon};$("mrua").textContent=generico(r.rua)?"No troço que tocaste no mapa":"Em "+r.rua;$("mdesc").value="";$("modal").style.display="flex";$("mtipo").focus()}
+function abreSobre(){$("sobre").style.display="flex";$("sobre").firstElementChild.scrollTop=0;$("sfecha").focus({preventScroll:true})}
+function fechaSobre(){if($("sobre").style.display!=="flex")return;$("sobre").style.display="none";try{localStorage.setItem("csd_sobre_visto","1")}catch(_){}$("bsobre").focus()}
 function fechaModal(){$("modal").style.display="none";repPonto=null}
 async function enviaReporte(){if(!repPonto)return;const b=$("menv");b.disabled=true;
  const res=await fetch("api/reportes",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({...repPonto,tipo:$("mtipo").value,descricao:$("mdesc").value})});
